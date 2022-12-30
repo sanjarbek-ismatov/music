@@ -27,10 +27,41 @@ function playMusic(){
         pause.classList.remove('fa-circle-pause')
         pause.classList.add('fa-circle-play')
     }
+    setInterval(() => {
+        const percent = audioTag.duration
+        console.log(percent / audioTag.currentTime)
+    }, 1000)
    
 }
 function changeEvent(){
     const percent = audioTag.duration / 100
     audioTag.currentTime = range.value * percent
 }
+
+function nextMusic(){
+    range.value = 0
+    if(index == songs.length - 1){
+        index = 0
+    }
+    else{
+        index++
+    }
+    title.textContent = `${songs[index].name} - ${songs[index].author}`
+    audioTag.src = songs[index].src
+    playMusic()
+}
+function prevMusic(){
+    range.value = 0
+     if(index == 0){
+        index = songs.length - 1
+    }
+    else{
+        index--
+    }
+    title.textContent = `${songs[index].name} - ${songs[index].author}`
+    audioTag.src = songs[index].src
+    playMusic()
+}
+next.addEventListener('click', nextMusic)
+prev.addEventListener('click', prevMusic)
 pause.addEventListener('click', playMusic)
