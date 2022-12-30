@@ -11,6 +11,21 @@ const songs = [
     src: "./audios/audio-3.mp3",
   },
   { name: "Фея", author: "SHAMI", src: "./audios/audio-4.mp3" },
+  {
+    name: "Ты Cо Мной",
+    author: "Lina Lee feat Ваня Дмитриенко",
+    src: "./audios/audio-5.mp3",
+  },
+  {
+    name: "Arcade",
+    author: "Duncan Laurence feat Fletcher",
+    src: "./audios/audio-6.mp3",
+  },
+  {
+    name: "No lie",
+    author: "Sean Paul & Dua Lipa",
+    src: "./audios/audio-7.mp3",
+  },
 ];
 const audioTag = document.querySelector("#audio");
 const next = document.querySelector("#next");
@@ -26,7 +41,6 @@ const volumePercent = document.querySelector("#volumePercent");
 let index = localStorage.index || 0;
 audioTag.src = songs[index].src;
 title.textContent = `${songs[index].name} - ${songs[index].author}`;
-
 
 audioTag.onloadedmetadata = () => {
   const toMinute = Math.floor(audioTag.duration / 60);
