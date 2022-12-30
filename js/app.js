@@ -10,10 +10,12 @@ const pause = document.querySelector('#pause')
 const prev = document.querySelector('#prev')
 const range = document.querySelector('#range')
 const img = document.querySelector('#img')
-let index = 0
+const title = document.querySelector('#title')
+let index = 2
+audioTag.src = songs[index].src
+title.textContent = `${songs[index].name} - ${songs[index].author}`
 function playMusic(){
     if(audioTag.paused){
-        audioTag.src = songs[index].src
         audioTag.play()
         img.classList.add('playing')
         pause.classList.add('fa-circle-pause')
