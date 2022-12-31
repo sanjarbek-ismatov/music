@@ -31,6 +31,7 @@ const audioTag = document.querySelector("#audio");
 const next = document.querySelector("#next");
 const pause = document.querySelector("#pause");
 const prev = document.querySelector("#prev");
+const playPause = document.querySelector("#playPause");
 const range = document.querySelector("#range");
 const img = document.querySelector("#img");
 const title = document.querySelector("#title");
@@ -108,4 +109,4 @@ function prevMusic() {
 }
 next.addEventListener("click", nextMusic);
 prev.addEventListener("click", prevMusic);
-pause.addEventListener("click", playMusic);
+playPause.addEventListener("click", playMusic);
