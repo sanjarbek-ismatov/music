@@ -6,10 +6,18 @@ export interface Audio {
   audio: string;
 }
 export function dbReader() {
-  const data = fs.readFileSync(path.resolve(__dirname, "../db/audios.json"), {
-    encoding: "utf-8",
-  });
-  return JSON.parse(data) as Audio[];
+  try {
+    const data = fs.readFileSync(path.resolve(__dirname, "../db/audios.json"), {
+      encoding: "utf-8",
+    });
+    return JSON.parse(data) as Audio[];
+  } catch (ex) {
+    fs.writeFileSync(path.resolve(__dirname, "../db/audios.json"), "[]");
+    const data = fs.readFileSync(path.resolve(__dirname, "../db/audios.json"), {
+      encoding: "utf-8",
+    });
+    return JSON.parse(data) as Audio[];
+  }
 }
 export function dbWriter(body: Audio) {
   const data = dbReader();

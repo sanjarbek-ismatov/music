@@ -5,6 +5,7 @@ import { upload } from "../models/storagemodel";
 const router = express.Router();
 router.post("/upload", upload.single("audio"), (req, res) => {
   const { title, author } = req.body;
+  console.log(title, author, req.file?.filename);
   if (title && author && req.file?.filename) {
     const audio: Audio = {
       title,
