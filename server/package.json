@@ -1,0 +1,37 @@
+{
+  "name": "music-player",
+  "version": "1.0.0",
+  "description": "This is  music player",
+  "main": "index.js",
+  "scripts": {
+    "build": "esbuild index.ts --bundle --minify --platform=node  --outfile=index.js",
+    "dev": "nodemon index.ts",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sanjarbek-ismatov/music.git"
+  },
+  "author": "Sanjarbek",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sanjarbek-ismatov/music/issues"
+  },
+  "homepage": "https://github.com/sanjarbek-ismatov/music#readme",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
+    "esbuild": "^0.17.10",
+    "express": "^4.18.2",
+    "gridfs-stream": "^1.1.1",
+    "multer": "1.4.5-lts.1",
+    "typescript": "^4.9.5"
+  },
+  "devDependencies": {
+    "@types/body-parser": "^1.19.2",
+    "@types/cors": "^2.8.13",
+    "@types/express": "^4.17.17",
+    "@types/gridfs-stream": "^0.5.36",
+    "@types/multer": "1.4.7"
+  }
+}

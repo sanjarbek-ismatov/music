@@ -110,3 +110,8 @@ function prevMusic() {
 next.addEventListener("click", nextMusic);
 prev.addEventListener("click", prevMusic);
 playPause.addEventListener("click", playMusic);
+class CustomTag extends HTMLElement {
+  alert() {
+    alert("hello");
+  }
+}
