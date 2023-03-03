@@ -5,4 +5,4 @@ const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/files", files);
-app.listen(4000, () => console.log("Listening"));
+app.listen(process.env.PORT || 4000, () => console.log("Listening"));

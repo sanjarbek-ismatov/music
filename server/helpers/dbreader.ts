@@ -3,7 +3,7 @@ import path from "path";
 export interface Audio {
   title: string;
   author: string;
-  audio: string;
+  audio?: string;
 }
 export function dbReader() {
   try {
