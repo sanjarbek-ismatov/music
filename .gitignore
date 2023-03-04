@@ -1,4 +1,4 @@
 /server/node_modules/*
-/server/assets/*
-/server/db/*
+/server/assets/*.mp3
+/server/db/*.json
 /server/index.js
