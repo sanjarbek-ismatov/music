@@ -11,6 +11,7 @@ specifiers:
   esbuild: ^0.17.10
   express: ^4.18.2
   gridfs-stream: ^1.1.1
+  helmet: ^6.0.1
   multer: 1.4.5-lts.1
   typescript: ^4.9.5
 
@@ -20,6 +21,7 @@ dependencies:
   esbuild: 0.17.10
   express: 4.18.2
   gridfs-stream: 1.1.1
+  helmet: 6.0.1
   multer: 1.4.5-lts.1
   typescript: 4.9.5
 
@@ -1449,6 +1451,11 @@ packages:
     engines: {node: '>= 0.4.0'}
     dependencies:
       function-bind: 1.1.1
+    dev: false
+
+  /helmet/6.0.1:
+    resolution: {integrity: sha512-8wo+VdQhTMVBMCITYZaGTbE4lvlthelPYSvoyNvk4RECTmrVjMerp9RfUOQXZWLvCcAn1pKj7ZRxK4lI9Alrcw==}
+    engines: {node: '>=14.0.0'}
     dev: false
 
   /http-errors/2.0.0:

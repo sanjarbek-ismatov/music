@@ -5,7 +5,7 @@ import { upload } from "../models/storagemodel";
 const router = express.Router();
 router.post("/upload", upload.single("audio"), (req, res) => {
   const { title, author } = req.body;
-  console.log(process.cwd());
+  console.log(req.body);
   if (title && author && req.file?.filename) {
     const audio: Audio = {
       title,
@@ -24,6 +24,7 @@ router.get("/", (req, res) => {
 router.get("/audio/:filename", (req, res) => {
   try {
     res
+      .contentType("audio/mp3")
       .status(200)
       .sendFile(path.resolve(__dirname, "assets", req.params.filename));
   } catch (ex: any) {
