@@ -10,7 +10,7 @@ const currentTime = document.querySelector("#currentTime");
 const fullTime = document.querySelector("#fullTime");
 const volume = document.querySelector("#volume");
 const volumePercent = document.querySelector("#volumePercent");
-fetch("http://localhost:4000/files")
+fetch("https://music-uz.onrender.com/files")
   .then((res) => res.json())
   .then((data) => main(data));
 /**
@@ -24,7 +24,7 @@ function main(songs) {
    * @returns {string}
    */
   function songSrc(index) {
-    return `http://localhost:4000/files/audio/${songs[index].audio}`;
+    return `https://music-uz.onrender.com/files/audio/${songs[index].audio}`;
   }
   /**
    *
