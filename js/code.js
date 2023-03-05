@@ -1,32 +1,3 @@
-// const songs = [
-//   { name: "Колыбельная", author: "Jah khalib", src: "./audios/audio-1.mp3" },
-//   {
-//     name: "Let Me Down Slowly",
-//     author: "Alec Bejamin",
-//     src: "./audios/audio-2.mp3",
-//   },
-//   {
-//     name: "Берега",
-//     author: "Timran & Zell & Batrai",
-//     src: "./audios/audio-3.mp3",
-//   },
-//   { name: "Фея", author: "SHAMI", src: "./audios/audio-4.mp3" },
-//   {
-//     name: "Ты Cо Мной",
-//     author: "Lina Lee feat Ваня Дмитриенко",
-//     src: "./audios/audio-5.mp3",
-//   },
-//   {
-//     name: "Arcade",
-//     author: "Duncan Laurence feat Fletcher",
-//     src: "./audios/audio-6.mp3",
-//   },
-//   {
-//     name: "No lie",
-//     author: "Sean Paul & Dua Lipa",
-//     src: "./audios/audio-7.mp3",
-//   },
-// ];
 const audioTag = document.querySelector("#audio");
 const next = document.querySelector("#next");
 const pause = document.querySelector("#pause");
@@ -42,10 +13,30 @@ const volumePercent = document.querySelector("#volumePercent");
 fetch("http://localhost:4000/files")
   .then((res) => res.json())
   .then((data) => main(data));
+/**
+ * main function working after fetching data
+ * @param {{title: string; author: string; audio: string}[]} songs
+ */
 function main(songs) {
+  /**
+   * returns src for audio tag
+   * @param {number} index
+   * @returns {string}
+   */
+  function songSrc(index) {
+    return `http://localhost:4000/files/audio/${songs[index].audio}`;
+  }
+  /**
+   *
+   * @param {number} index
+   * @returns {string} title of page
+   */
+  function getTitle(index) {
+    return `${songs[index].title} - ${songs[index].author}`;
+  }
   let index = localStorage.index || 0;
-  audioTag.src = `http://localhost:4000/files/audio/${songs[index].audio}`;
-  title.textContent = `${songs[index].title} - ${songs[index].author}`;
+  audioTag.src = songSrc(index);
+  title.textContent = getTitle(index);
 
   audioTag.onloadedmetadata = () => {
     const toMinute = Math.floor(audioTag.duration / 60);
@@ -56,7 +47,7 @@ function main(songs) {
   };
   function playMusic() {
     localStorage.setItem("index", index);
-    document.title = `${songs[index].title} - ${songs[index].author}`;
+    document.title = getTitle(index);
     if (audioTag.paused) {
       audioTag.play();
       img.classList.add("playing");
@@ -89,8 +80,8 @@ function main(songs) {
     } else {
       index++;
     }
-    title.textContent = `${songs[index].title} - ${songs[index].author}`;
-    audioTag.src = `http://localhost:4000/files/audio/${songs[index].audio}`;
+    title.textContent = getTitle(index);
+    audioTag.src = songSrc(index);
     playMusic();
   }
   function prevMusic() {
@@ -100,8 +91,8 @@ function main(songs) {
     } else {
       index--;
     }
-    title.textContent = `${songs[index].title} - ${songs[index].author}`;
-    audioTag.src = `http://localhost:4000/files/audio/${songs[index].audio}`;
+    title.textContent = getTitle(index);
+    audioTag.src = songSrc(index);
     playMusic();
   }
   next.addEventListener("click", nextMusic);
