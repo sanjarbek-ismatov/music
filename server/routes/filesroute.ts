@@ -12,7 +12,7 @@ router.post("/upload", upload.single("audio"), async (req, res) => {
       audio: req.file?.filename,
     };
     dbWriter(audio);
-    res.status(201).send("Success!");
+    res.redirect(201, "https://mpsuz.vercel.app/");
   } else res.status(400).send("Bad request");
 });
 router.get("/", async (req, res) => {
